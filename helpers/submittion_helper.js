@@ -36,14 +36,14 @@ function BtnLoading(elem) {
              if (data == 1) {
                  if(page == "register"){
                      Swal.fire({
-                         position: 'top-end',
-                         icon: 'success',
-                         title: success_message,
-                         showConfirmButton: false,
-                         timer: 1500,
-                         }).then((result) => {
-                             location.href = 'index.php';
-                         });
+                        position: 'top-end',
+                        icon: 'success',
+                        title: success_message,
+                        showConfirmButton: false,
+                        timer: 1500,
+                        }).then((result) => {
+                            location.href = 'index.php';
+                        });
                  }
                  else if(page == 'login'){
                     Swal.fire({
