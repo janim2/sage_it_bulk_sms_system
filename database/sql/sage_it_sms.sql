@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 03, 2022 at 03:01 PM
+-- Generation Time: Jul 16, 2022 at 07:47 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `clients` (
   `id` int(11) NOT NULL,
+  `apikey` varchar(255) NOT NULL,
   `fullname` text NOT NULL,
   `email` varchar(255) NOT NULL,
   `business_name` varchar(255) NOT NULL,
@@ -42,8 +43,8 @@ CREATE TABLE `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`id`, `fullname`, `email`, `business_name`, `phonenumber`, `password`, `sms_credits`, `date`) VALUES
-(1, 'Jesse Anim', 'iamjesse75@gmail.com', 'Ghana', '0268977129', 'password', 1, '2022-06-03 12:56:29');
+INSERT INTO `clients` (`id`, `apikey`, `fullname`, `email`, `business_name`, `phonenumber`, `password`, `sms_credits`, `date`) VALUES
+(1, 'e1b48370-09dc-419a-98fa-5d273d53149b', 'Jesse Anim', 'iamjesse75@gmail.com', 'Ghana', '0268977129', 'password', 2, '2022-07-16 17:38:28');
 
 -- --------------------------------------------------------
 
@@ -59,6 +60,15 @@ CREATE TABLE `quickSMS` (
   `senderID_used_id` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quickSMS`
+--
+
+INSERT INTO `quickSMS` (`id`, `client_id`, `recipients`, `message`, `senderID_used_id`, `date`) VALUES
+(61, 1, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. It is also used to temporarily replace.\r\nGenerate Lorem Ipsum placeholder text for use in your graphic, print and web layouts, and discover plugins for your favorite writing, design and blogging tools. Explore the origins, history and meaning of the famous passage, and learn how Lorem Ipsum went from scrambled Latin passage to ubiqitous ...', 5, '2022-07-16 17:37:10'),
+(62, 1, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ', 5, '2022-07-16 17:37:54'),
+(63, 1, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly.', 5, '2022-07-16 17:38:28');
 
 -- --------------------------------------------------------
 
@@ -81,7 +91,10 @@ CREATE TABLE `senderID` (
 
 INSERT INTO `senderID` (`id`, `status`, `client_id`, `sender_id`, `purpose`, `date_created`) VALUES
 (4, 1, 1, 'DaChurchMan', 'For DachurchMan', '2022-06-02 22:34:52'),
-(5, 1, 1, 'SageIT', 'for sageIt services', '2022-06-03 12:50:35');
+(5, 1, 1, 'SageIT', 'for sageIt services', '2022-06-03 12:50:35'),
+(6, 0, 1, 'Jesse', '', '2022-07-16 14:35:34'),
+(7, 0, 1, 'Jesse3', 'For testing', '2022-07-16 14:46:57'),
+(9, 0, 1, 'Ben', 'For testing', '2022-07-16 16:24:03');
 
 -- --------------------------------------------------------
 
@@ -97,6 +110,15 @@ CREATE TABLE `sms_logs` (
   `message` varchar(1000) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sms_logs`
+--
+
+INSERT INTO `sms_logs` (`id`, `client_id`, `senderID_used_id`, `recipient`, `message`, `date`) VALUES
+(21, 1, 5, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. It is also used to temporarily replace.\r\nGenerate Lorem Ipsum placeholder text for use in your graphic, print and web layouts, and discover plugins for your favorite writing, design and blogging tools. Explore the origins, history and meaning of the famous passage, and learn how Lorem Ipsum went from scrambled Latin passage to ubiqitous ...', '2022-07-16 17:37:11'),
+(22, 1, 5, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ', '2022-07-16 17:37:54'),
+(23, 1, 5, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly.', '2022-07-16 17:38:28');
 
 --
 -- Indexes for dumped tables
@@ -140,19 +162,19 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `quickSMS`
 --
 ALTER TABLE `quickSMS`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `senderID`
 --
 ALTER TABLE `senderID`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `sms_logs`
 --
 ALTER TABLE `sms_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
