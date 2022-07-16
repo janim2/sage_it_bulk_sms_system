@@ -25,6 +25,31 @@
         return $statement->fetch()['sender_id'];
     }
 
+    function convertAPIKeyToID($con, $key){
+        $query = "SELECT id FROM clients WHERE apikey = :apikey";
+        $statement = $con->prepare($query);
+
+        $statement->execute(
+            array(
+                ":apikey" => $key, 
+            )
+        );
+        return $statement->fetch()['id'];
+    }
+
+    function determineSmsCredits($message){
+        $len = strlen($message);
+        if($len >= 1 && $len <= 160){
+            return 1;
+        }
+        else if($len >= 161 && $len <= 320){
+            return 2;
+        }
+        else{
+            return 3;
+        }
+    }
+
     function sendSms($con, $sender_id, $phone, $msg)
     {
         $send = new SendSms();
@@ -33,7 +58,7 @@
         $send->numbers = $phone;
         $send->sender = convertSenderIDToName($con, $sender_id);
         if(checkSMSCount($con) > 0){
-            saveSMS($con, $sender_id, $phone, $msg, checkSMSCount($con) - 1);
+            saveSMS($con, $sender_id, $phone, $msg, checkSMSCount($con) - determineSmsCredits($msg));
             return $send->sendMessage();
         }
         else{?>
