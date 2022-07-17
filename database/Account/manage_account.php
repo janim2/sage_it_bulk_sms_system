@@ -46,11 +46,12 @@
                 return "Password length must be greater than 6";
             }
             else if($this->checkForPresence($con) == 1){
-                $query = "INSERT INTO clients(fullname, email, business_name, phonenumber, password) 
-                VALUES(:f, :e, :bn, :pn, :p)";
+                $query = "INSERT INTO clients(apikey, fullname, email, business_name, phonenumber, password) 
+                VALUES(:k, :f, :e, :bn, :pn, :p)";
                 $statement = $con->prepare($query);
                 $has_added = $statement->execute(
                     array(
+                        ":k"    => $key = implode('-', str_split(substr(strtolower(md5(microtime().rand(1000, 9999))), 0, 30), 6)),
                         ":f"    => $this->fullname, 
                         ":e"    => $this->email, 
                         ":bn"   => $this->business_name, 

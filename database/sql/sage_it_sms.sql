@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 16, 2022 at 07:47 PM
+-- Generation Time: Jul 17, 2022 at 08:49 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -44,7 +44,8 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `apikey`, `fullname`, `email`, `business_name`, `phonenumber`, `password`, `sms_credits`, `date`) VALUES
-(1, 'e1b48370-09dc-419a-98fa-5d273d53149b', 'Jesse Anim', 'iamjesse75@gmail.com', 'Ghana', '0268977129', 'password', 2, '2022-07-16 17:38:28');
+(1, 'e1b48370-09dc-419a-98fa-5d273d53149b', 'Jesse Anim', 'iamjesse75@gmail.com', 'Ghana', '0268977129', 'password', 0, '2022-07-17 14:45:45'),
+(2, 'bb6b52-b291ab-6df935-ca0c27-ceb219', 'Jesse Anim', 'animjesse55@gmail.com', 'Ghana', '0268977129', 'password', 0, '2022-07-17 18:48:31');
 
 -- --------------------------------------------------------
 
@@ -92,9 +93,10 @@ CREATE TABLE `senderID` (
 INSERT INTO `senderID` (`id`, `status`, `client_id`, `sender_id`, `purpose`, `date_created`) VALUES
 (4, 1, 1, 'DaChurchMan', 'For DachurchMan', '2022-06-02 22:34:52'),
 (5, 1, 1, 'SageIT', 'for sageIt services', '2022-06-03 12:50:35'),
-(6, 0, 1, 'Jesse', '', '2022-07-16 14:35:34'),
 (7, 0, 1, 'Jesse3', 'For testing', '2022-07-16 14:46:57'),
-(9, 0, 1, 'Ben', 'For testing', '2022-07-16 16:24:03');
+(9, 0, 1, 'Ben', 'For testing', '2022-07-16 16:24:03'),
+(10, 0, 1, 'Jesse', 'Unknown', '2022-07-17 13:50:39'),
+(11, 0, 1, 'Boss', 'password', '2022-07-17 13:58:59');
 
 -- --------------------------------------------------------
 
@@ -118,7 +120,12 @@ CREATE TABLE `sms_logs` (
 INSERT INTO `sms_logs` (`id`, `client_id`, `senderID_used_id`, `recipient`, `message`, `date`) VALUES
 (21, 1, 5, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. It is also used to temporarily replace.\r\nGenerate Lorem Ipsum placeholder text for use in your graphic, print and web layouts, and discover plugins for your favorite writing, design and blogging tools. Explore the origins, history and meaning of the famous passage, and learn how Lorem Ipsum went from scrambled Latin passage to ubiqitous ...', '2022-07-16 17:37:11'),
 (22, 1, 5, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ', '2022-07-16 17:37:54'),
-(23, 1, 5, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly.', '2022-07-16 17:38:28');
+(23, 1, 5, '0268977129', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly.', '2022-07-16 17:38:28'),
+(24, 1, 5, '0268977129', 'Testing', '2022-07-17 12:37:08'),
+(25, 1, 5, '0268977129', 'Testing', '2022-07-17 12:42:18'),
+(26, 1, 5, '0268977129', 'Testing', '2022-07-17 12:44:45'),
+(27, 1, 5, '0268977129', 'Testing', '2022-07-17 12:47:09'),
+(28, 1, 5, '0268977129', 'Testing the API', '2022-07-17 14:45:45');
 
 --
 -- Indexes for dumped tables
@@ -156,7 +163,7 @@ ALTER TABLE `sms_logs`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `quickSMS`
@@ -168,13 +175,13 @@ ALTER TABLE `quickSMS`
 -- AUTO_INCREMENT for table `senderID`
 --
 ALTER TABLE `senderID`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `sms_logs`
 --
 ALTER TABLE `sms_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
