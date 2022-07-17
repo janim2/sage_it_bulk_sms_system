@@ -50,8 +50,10 @@
         }
     }
 
+    //sendSMS from the UI perspective
     function sendSms($con, $sender_id, $phone, $msg)
     {
+        echo $sender_id;
         $send = new SendSms();
         $send->key = '5zFWCDwTTpKT6xeSz1OjZp4BW';
         $send->message = $msg;
@@ -73,7 +75,7 @@
         $statement = $con->prepare($query);
         $saved = $statement->execute(
             array(
-                ":c_id" => $_SESSION['sage_it_sms_id'],
+                ":c_id" => $_SESSION['sage_it_sms_id'] ?? convertSenderIDToClientID($con, $sender_id),
                 ":s_id" => $sender_id,
                 ":r"  => $phone,
                 ":m"  => $msg
