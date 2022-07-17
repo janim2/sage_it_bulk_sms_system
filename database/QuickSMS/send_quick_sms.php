@@ -1,7 +1,21 @@
 <?php
+    session_start();
     require_once '../config.php';
-    require_once 'manage_quick_sms.php';
+    include_once '../../helpers/functions.php';
+    // require_once 'manage_quick_sms.php';
 
-    $add = new ManageQuickSMS();
-    $add->__quickSMSConstruct();
-    echo $add->SaveQuickSMS($con);
+    //USING THE API CREATED
+
+    $email      = $_SESSION['sage_it_sms_email'];
+    $sender_id  = convertSenderIDToName($con,$_POST['senderID']);
+    $message    = $_POST['message']; 
+    $recipients = $_POST['recipients'];
+
+    $result = sendMessage($con, $email, $sender_id, $recipients, $message);
+    echo $result['message'];
+
+    //USING THE CLASS CREATED
+
+    // $add = new ManageQuickSMS();
+    // $add->__quickSMSConstruct();
+    // echo $add->SaveQuickSMS($con);

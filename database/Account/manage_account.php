@@ -87,6 +87,7 @@
                $result = $statement->fetch();
             //    session_start();
                $_SESSION['sage_it_sms_id']      = $result['id'];
+               $_SESSION['sage_it_sms_email']   = $result['email'];
                $_SESSION['sage_it_sms_name']    = $result['fullname'];
                $_SESSION['sage_it_business_name'] = $result['business_name'];
                return 1;
