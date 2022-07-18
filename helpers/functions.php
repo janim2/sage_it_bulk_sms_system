@@ -27,6 +27,18 @@
         return $statement->fetch()['sender_id'];
     }
 
+    function fetchAPIKey($con){
+        $query = "SELECT apikey FROM clients WHERE id = :id";
+        $statement = $con->prepare($query);
+        $statement->execute(
+            array(
+                ":id" => $_SESSION['sage_it_sms_id'],
+            )
+        );
+        $result = $statement->fetch();
+        return $result['apikey'];
+    }
+
     // function convertAPIKeyToID($con, $key){
     //     $query = "SELECT id FROM clients WHERE apikey = :apikey";
     //     $statement = $con->prepare($query);

@@ -38,6 +38,7 @@
                     echo json_encode(
                         array(
                             "status"  => 400,
+                            "code"    => 4006,
                             "message" => "Invalid API key"
                         )
                     );
@@ -48,6 +49,7 @@
                 echo json_encode(
                     array(
                         "status"  => 406,
+                        "code"    => 4001,
                         "message" => "All Fields required"
                     )
                 );
@@ -69,6 +71,7 @@
                     echo json_encode(
                         array(
                             "status"  => 208,
+                            "code"    => 2008,
                             "message" => "Sender ID not allowed"
                         )
                     );
@@ -95,7 +98,8 @@
                 echo json_encode(
                     array(
                         "status"  => 200,
-                        "message" => "Sender ID created. It would be verified within 10 mins. Call 0274756446 if you need it urgently."
+                        "code"    => 2001,
+                        "message" => "Sender ID created. It would be verified within 10 mins. Call 054 880 1288 if you need it urgently."
                     )
                 );
             }

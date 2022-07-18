@@ -40,6 +40,7 @@
                     echo json_encode(
                         array(
                             "status"  => 400,
+                            "code"    => 4006,
                             "message" => "Invalid API key"
                         )
                     );
@@ -50,6 +51,7 @@
                 echo json_encode(
                     array(
                         "status"  => 406,
+                        "code"    => 4001,
                         "message" => "All fields required"
                     )
                 );
@@ -150,7 +152,8 @@
                         echo json_encode(
                             array(
                                 "status"  => 206,
-                                "message" => "Sender ID has not been approved. Call 0274756446 if you need it urgently."
+                                "code"    => 2006,
+                                "message" => "Sender ID has not been approved. Call 054 880 1288 if you need it urgently."
                             )
                         );
                     }
@@ -160,6 +163,7 @@
                     echo json_encode(
                         array(
                             "status"  => 400,
+                            "code"    => 4000,
                             "message" => "Invalid Sender ID"
                         )
                     );
@@ -187,6 +191,7 @@
                 echo json_encode(
                     array(
                         "status"  => 400,
+                        "code"    => 3000,
                         "message" => "SMS credits exhausted"
                     )
                 );
@@ -221,6 +226,7 @@
                     echo json_encode(
                         array(
                             "status"  => 200,
+                            "code"    => 2000,
                             "message" => "SMS sent"
                         )
                     );

@@ -80,13 +80,13 @@
                     </a>
                     <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">
 
-                        <!--    <li class="list-group-item">
-                        <a href="#" class="animated animated-short fadeInUp">
-                            <span class="fa fa-envelope-o"></span> Messages
-                            <span class="label label-warning">54</span>
+                    <li class="list-group-item">
+                        <a href="api-list.php" class="animated animated-short fadeInUp">
+                            <span class="fa fa-envelope-o"></span> API Documentation
+                            <span class="label label-warning">V1</span>
                         </a>
                     </li>
-                    <li class="list-group-item">
+                <!--    <li class="list-group-item">
                         <a href="#" class="animated animated-short fadeInUp">
                             <span class="fa fa-users"></span> Friends
                             <span class="label label-warning">6</span>
