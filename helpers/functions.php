@@ -39,6 +39,10 @@
         return $result['apikey'];
     }
 
+    function generateAPIKey($con){
+        return implode('-', str_split(substr(strtolower(md5(microtime().rand(1000, 9999))), 0, 30), 6));
+    }
+
     // function convertAPIKeyToID($con, $key){
     //     $query = "SELECT id FROM clients WHERE apikey = :apikey";
     //     $statement = $con->prepare($query);
@@ -64,20 +68,21 @@
     //     }
     // }
 
-    function createSenderID($con, $email, $sender_id, $purpose){
-        $senderID = new SenderID();
-        $senderID->key = 'e1b48370-09dc-419a-98fa-5d273d53149b';
-        $senderID->email = $email;
-        $senderID->senderID = $sender_id;
-        $senderID->purpose = $purpose;
-        return $senderID->createSenderID();
+    function creatSenderID($con, $email, $sender_id, $purpose){
+        // echo fetchAPIKey($con);
+        $senda_id = new SenderID();
+        $senda_id->keey = fetchAPIKey($con);
+        $senda_id->email = $email;
+        $senda_id->senderID = $sender_id;
+        $senda_id->purpose = $purpose;
+        return $senda_id->createSenderID();
     }
 
-    function sendMessage($con, $email, $senderID, $phoneNumber, $message){
+    function sendMessage($con, $email, $sender_id, $phoneNumber, $message){
         $sendmessage = new sendMessage();
-        $sendmessage->key = 'e1b48370-09dc-419a-98fa-5d273d53149b';
+        $sendmessage->keey = 'e1b48370-09dc-419a-98fa-5d273d53149b';
         $sendmessage->email = $email;
-        $sendmessage->senderID = $senderID;
+        $sendmessage->senderID = $sender_id;
         $sendmessage->phoneNumber = $phoneNumber;
         $sendmessage->message = $message;
         return $sendmessage->sendTheMessage();

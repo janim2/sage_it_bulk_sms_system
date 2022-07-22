@@ -99,7 +99,6 @@
             return $statement->fetch()['id'];
         }
 
-
         function checkSMSCount($con){
             $client_id = $this->convertSenderIDToClientID($con);
             // echo "senderID".$this->senderID;

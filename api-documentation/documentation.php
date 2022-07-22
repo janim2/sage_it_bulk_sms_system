@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>API - Documentation</title>
-    <meta name="description" content="">
+    <meta name="description" content="sms portal">
     <meta name="author" content="ticlekiwi">
 
     <meta http-equiv="cleartype" content="on">
@@ -111,8 +111,8 @@
                 <pre>
 
                 </pre>
-                <p>SageIT SMS uses API keys to allow access to the API. You can register or login for a new mNotify API
-                    key by clicking <a href="../dashboard.php">here</a>.</p>
+                <p>SageIT SMS uses API keys to allow access to the API. You can register or login for a new SageIT SMS API
+                    key by clicking <a href="../index.php">here</a>.</p>
 
                 <p>SageIT SMS expects for the API key to be included in all API requests to the server as a POST
                     parameter:</p>
@@ -341,141 +341,7 @@
             </div>
 
 
-<!-- 
-            <div class="overflow-hidden content-section" id="content-send-bulkSMS">
-                <h2>Send Bulk SMS</h2>
-                <pre><code class="bash">
-                
 
-            $endPoint = 'https://api.mnotify.com/api/sms/quick';
-            $apiKey = 'YOUR_API_KEY';
-            $url = $endPoint . '?key=' . $apiKey;
-            $data = [
-               'recipient' => ['0249706365', '0203698970'],
-               'sender' => 'mNotify',
-               'message' => 'API messaging is fun!',
-               'is_schedule' => 'false',
-               'schedule_date' => ''
-            ];
-
-            $ch = curl_init();
-            $headers = array();
-            $headers[] = "Content-Type: application/json";
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-            $result = curl_exec($ch);
-            $result = json_decode($result, TRUE);
-            curl_close($ch);
-
-            <p>The above command returns JSON structured like this:</p>
-
-            {
-            "status": "success",
-            "code": "2000",
-            "message": "messages sent successfully",
-            "summary": {
-                "_id": "8C5D1052-9BD6-459A-96FF-5DC1516C05FD",
-                "type": "API GROUP SMS",
-                "total_sent": 3,
-                "contacts": 3,
-                "total_rejected": 0,
-                "numbers_sent": [
-                    "0203698970",
-                    "0244698970",
-                    "0249706365"
-                ],
-                "credit_used": 3,
-                "credit_left": 1480
-            }
-        }
-            
-                </code></pre>
-
-                <br>
-                <pre><code class="json">        </code></pre>
-                <p>Send SMS to clients/contacts using groups you created earlier which has contacts in them</p>
-                <h3 id='http-request-18'>HTTP Request</h3>
-                <p><code>POST https://api.mnotify.com/api/sms/group</code></p>
-                <h3 id='url-parameters-9'>URL Parameters</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th style="text-align: left;">Required</th>
-                            <th style="text-align: left">Type</th>
-                            <th style="text-align: left">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>key</td>
-                            <td style="text-align: left">Yes</td>
-                            <td style="text-align: left">string</td>
-                            <td style="text-align: left">Your enabled api key</td>
-                        </tr>
-                        <tr>
-                            <td>group_id</td>
-                            <td style="text-align: left">Yes</td>
-                            <td style="text-align: left">array</td>
-                            <td style="text-align: left">Array of group ids eg. [&#39;1&#39;, &#39;2&#39;]</td>
-                        </tr>
-                        <tr>
-                            <td>sender</td>
-                            <td style="text-align: left">Yes</td>
-                            <td style="text-align: left">string</td>
-                            <td style="text-align: left">Sender ID of the message. Must be at most 11 characters</td>
-                        </tr>
-                        <tr>
-                            <td>message</td>
-                            <td style="text-align: left">Yes</td>
-                            <td style="text-align: left">text</td>
-                            <td style="text-align: left">Message content</td>
-                        </tr>
-                        <tr>
-                            <td>message</td>
-                            <td style="text-align: left">Yes / No</td>
-                            <td style="text-align: left">text</td>
-                            <td style="text-align: left">Message content</td>
-                        </tr>
-                        <tr>
-                            <td>message_id</td>
-                            <td style="text-align: left">No / Yes</td>
-                            <td style="text-align: left">int</td>
-                            <td style="text-align: left">Message template id</td>
-                        </tr>
-                        <tr>
-                            <td>is_schedule</td>
-                            <td style="text-align: left">No</td>
-                            <td style="text-align: left">boolean</td>
-                            <td style="text-align: left">Schedule flag. True means schedule message</td>
-                        </tr>
-                        <tr>
-                            <td>schedule_date</td>
-                            <td style="text-align: left">No</td>
-                            <td style="text-align: left">datetime</td>
-                            <td style="text-align: left">date and time in YYYY-MM-DD hh:mm if is_schedule is true</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <p>
-                    In our example, we will use message template id because we have already used message content when
-                    dealing with quick SMS
-                </p>
-
-                <p>
-                    <strong>_id</strong> is the id of the message sent. You can store this id somewhere to check the
-                    delivery status of your message.
-                    This id is also called campaign id
-                    <p>
-                        <h3 id='schedule-group-bulk-sms'>Schedule Group Bulk SMS</h3>
-                        <p>When scheduling quick SMS, you must set <code>is_schedule</code> to true and include the date
-                            and time in <code>schedule_date</code>
-                            payload in the format <code>YYYY-MM-DD hh:mm</code>.</p>
-            </div> -->
 
 
             <div class="overflow-hidden content-section" id="content-get-response-code">
@@ -485,7 +351,7 @@
                 </code></pre>
                 <p>
                     To get characters you need to make a POST call to the following url :<br>
-                    <code class="higlighted break-word">http://api.westeros.com/character/get</code>
+                    <!--<code class="higlighted break-word">http://api.westeros.com/character/get</code> -->
                 </p>
                 <br>
                 <pre><code class="json">

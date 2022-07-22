@@ -20,14 +20,14 @@
                             <a href="sms-send-quick.php">
                                 <span class="glyphicon glyphicon-tags"></span> Quick SMS </a>
                         </li>
-                        <li>
+                    <!--    <li>
                             <a href="sms-group-send.php">
                                 <span class="glyphicon glyphicon-tags"></span> Group SMS </a>
-                        </li>
+                        </li>-->
                     </ul>
                 </li>
 
-                <li>
+            <!--    <li>
                     <a class="accordion-toggle" href="#">
                         <span class="fa fa-share-square-o"></span>
                         <span class="sidebar-title">GROUPS & CONTACTS</span>
@@ -47,7 +47,7 @@
                                 <span class="fa fa-money"></span>New Contacts</a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
 
 
 

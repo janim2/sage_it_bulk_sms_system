@@ -15,10 +15,10 @@
 <head>
     <!-- -------------- Meta and Title -------------- -->
     <meta charset="utf-8">
-    <title>Alliance - A Responsive Bootstrap 3 Admin Dashboard Template</title>
-    <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme" />
-    <meta name="description" content="Alliance - A Responsive HTML5 Admin UI Framework">
-    <meta name="author" content="ThemeREX">
+    <title>SMS Portal-SageIT Services</title>
+    <meta name="keywords" content="sms api, portal"/>
+    <meta name="description" content="sms portal">
+    <meta name="author" content="sms api">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- -------------- Fonts -------------- -->
@@ -43,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="assets/allcp/forms/css/forms.css">
 
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="assets/img/sageit_logo.png">
 
     <!-- -------------- Datatables CSS -------------- -->
     <link rel="stylesheet" type="text/css" href="assets/js/plugins/datatables/media/css/dataTables.bootstrap.css">

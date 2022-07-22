@@ -82,7 +82,6 @@ function BtnLoading(elem) {
                  // alert(data);
                  
              } else {
-                 // alert(data);
                  Swal.fire({
                    position: 'top-end',
                    icon: 'error',

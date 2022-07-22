@@ -81,13 +81,25 @@
             }
         }
 
+        function convertAPIKeyToID($con, $key){
+            $query = "SELECT id FROM clients WHERE apikey = :apikey";
+            $statement = $con->prepare($query);
+    
+            $statement->execute(
+                array(
+                    ":apikey" => $key, 
+                )
+            );
+            return $statement->fetch()['id'];
+        }
+
         function saveSenderID($con){
             $query = "INSERT INTO senderID(client_id, sender_id, purpose) VALUES(:client_id, :sender_id, :purpose)";
             $statement = $con->prepare($query);
 
             $has_saved = $statement->execute(
                 array(
-                    ":client_id" => convertAPIKeyToID($con, $this->apiKey),
+                    ":client_id" => $this->convertAPIKeyToID($con, $this->apiKey),
                     ":sender_id" => $this->senderID,
                     ":purpose"   => $this->purpose
                 )

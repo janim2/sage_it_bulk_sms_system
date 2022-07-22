@@ -7,12 +7,18 @@
     //USING THE API CREATED
 
     $email      = $_SESSION['sage_it_sms_email'];
-    $sender_id  = convertSenderIDToName($con,$_POST['senderID']);
+    $sender_id  = convertSenderIDToName($con, $_POST['senderID']);
     $message    = $_POST['message']; 
     $recipients = $_POST['recipients'];
 
     $result = sendMessage($con, $email, $sender_id, $recipients, $message);
-    echo $result['message'];
+    // echo var_dump($result);
+    if($result['code'] == 2000){
+        echo 1;
+    }
+    else{
+        echo $result['message'];
+    }
 
     //USING THE CLASS CREATED
 

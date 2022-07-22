@@ -2,24 +2,28 @@
 class SenderID
 {
     private $_endpoint;
-    public $key;
+    public $keey;
     public $email;
     public $senderID;
     public $purpose;
 
     public function __construct()
     {
+        // $this->_endpoint = 'http://sms.sageitservices.com/api/sms/create_sender_id.php';
         $this->_endpoint = 'localhost/sms/api/sms/create_sender_id.php';
+
     }
 
     public function createSenderID()
     {
-        $endPoint = 'localhost/sms/api/sms/create_sender_id.php';
+        // $endPoint = 'http://sms.sageitservices.com/api/sms/create_sender_id.php';
+        $endPoint = 'http://localhost/sms/api/sms/create_sender_id.php';
+
         $url = $endPoint;
 
         $data = [
             'email'         => $this->email,
-            'api_key'       => $this->key,
+            'api_key'       => $this->keey,
             'senderID'      => $this->senderID,
             'purpose'       => $this->purpose,
         ];

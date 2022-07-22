@@ -2,7 +2,7 @@
 class sendMessage
 {
     private $_endpoint;
-    public $key;
+    public $keey;
     public $email;
     public $senderID;
     public $phoneNumber;
@@ -10,17 +10,18 @@ class sendMessage
 
     public function __construct()
     {
-        $this->_endpoint = 'localhost/sms/api/sms/send_SMS.php';
+        $this->_endpoint = 'http://localhost/sms/api/sms/send_SMS.php';
     }
 
     public function sendTheMessage()
     {
-        $endPoint = 'localhost/sms/api/sms/send_SMS.php';
+        $endPoint = 'http://localhost/sms/api/sms/send_SMS.php';
+
         $url = $endPoint;
 
         $data = [
             'email'         => $this->email,
-            'api_key'       => $this->key,
+            'api_key'       => $this->keey,
             'senderID'      => $this->senderID,
             'phoneNumber'   => $this->phoneNumber,
             'message'       => $this->message
@@ -35,6 +36,7 @@ class sendMessage
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         $result = curl_exec($ch);
+        // echo $result;
         return $result = json_decode($result, TRUE);
         curl_close($ch);
     }

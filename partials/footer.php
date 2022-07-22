@@ -2,8 +2,9 @@
         <footer id="content-footer" class="affix">
             <div class="row">
                 <div class="col-md-6">
-                    <span class="footer-legal">© 2015 All rights reserved. <a href="#">Therms of use</a> and <a
-                            href="#">Privacy policy</a></span>
+                    <span class="footer-legal">© <script>
+                    document.write(new Date().getFullYear())
+                </script> All rights reserved. <a href="#">SageIT SMS Portal</a></span>
                 </div>
                 <div class="col-md-6 text-right">
                     <span class="footer-meta"></span>

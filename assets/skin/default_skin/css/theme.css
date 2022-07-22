@@ -20661,10 +20661,10 @@ body.utility-page {
   min-height: 0;
   overflow: auto;
 }
-body.utility-page #main {
+/*body.utility-page #main {
   overflow: hidden;
   background: url("../../../img/patterns/backgrounds/1.jpg") no-repeat top center #2d494d;
-}
+} */
 body.utility-page #main:before {
   display: none;
 }
