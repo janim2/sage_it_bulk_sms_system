@@ -1,7 +1,7 @@
 <?php
 class sendMessage
 {
-    private $_endpoint;
+    public $_endpoint;
     public $keey;
     public $email;
     public $senderID;
@@ -15,9 +15,7 @@ class sendMessage
 
     public function sendTheMessage()
     {
-        $endPoint = 'http://localhost/sms/api/sms/send_SMS.php';
-
-        $url = $endPoint;
+        $url = $this->_endpoint;
 
         $data = [
             'email'         => $this->email,

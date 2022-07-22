@@ -80,7 +80,7 @@
 
     function sendMessage($con, $email, $sender_id, $phoneNumber, $message){
         $sendmessage = new sendMessage();
-        $sendmessage->keey = 'e1b48370-09dc-419a-98fa-5d273d53149b';
+        $sendmessage->keey = fetchAPIKey($con);
         $sendmessage->email = $email;
         $sendmessage->senderID = $sender_id;
         $sendmessage->phoneNumber = $phoneNumber;
