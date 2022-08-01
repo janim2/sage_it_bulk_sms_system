@@ -67,6 +67,17 @@ function BtnLoading(elem) {
                             location.href = 'register-sender-id.php';
                         });
                 }
+                else if(page == 'add_sms_group'){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: success_message,
+                        showConfirmButton: false,
+                        timer: 1500,
+                        }).then((result) => {
+                            location.href = 'sms-group.php';
+                        });
+                }
 
                  else{
                      Swal.fire({
