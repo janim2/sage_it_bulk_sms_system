@@ -200,15 +200,16 @@
         function saveSMS($con, $sender_id, $phone, $msg, $sms_count){
             // echo $sender_id;
             // echo $this->convertSenderIDToClientID($con, $sender_id);
-            $query = "INSERT INTO sms_logs(client_id, senderID_used_id, recipient, message) 
-                VALUES(:c_id, :s_id, :r, :m)";
+            $query = "INSERT INTO sms_logs(client_id, senderID_used_id, recipient, message, sms_credits) 
+                VALUES(:c_id, :s_id, :r, :m, :credit)";
             $statement = $con->prepare($query);
             $saved = $statement->execute(
                 array(
                     ":c_id" => $this->convertSenderIDToClientID($con),
                     ":s_id" => $sender_id,
                     ":r"  => $phone,
-                    ":m"  => $msg
+                    ":m"  => $msg, 
+                    ":credit" => $this->determineSmsCredits($msg)
                 )
             );
             if($saved){

@@ -62,7 +62,7 @@
                                             <td><?= $results['recipient'];?></td>
                                             <td><?= $results['message'];?></td>
                                             <td>Sent</td>
-                                            <td>1</td>
+                                            <td><?= $results['sms_credits'];?></td>
                                             <td class="hidden-xs"><?= convertSenderIDToName($con, $results['senderID_used_id']);?></td>
                                             <td class="hidden-xs"><?= $results['date'];?></td>
                                         </tr>
